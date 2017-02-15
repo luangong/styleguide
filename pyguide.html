@@ -26,7 +26,7 @@
                   var bodyElements = GetElementsByName(bodyName);
                   var linkElement = GetElementsByName('link-' + buttonName)[0];
                   if (bodyElements.length != 1) {
-                    throw Error('ShowHideByName() got the wrong number of bodyElements:  ' + 
+                    throw Error('ShowHideByName() got the wrong number of bodyElements:  ' +
                         bodyElements.length);
                   } else {
                     var bodyElement = bodyElements[0];
@@ -114,10 +114,10 @@
                   var showHideAllValue = showHideAllRegex.exec(window.location.href);
                   if (showHideAllValue != null) {
                     if (showHideAllValue[2] == "y") {
-                      SetHiddenState(document.getElementsByTagName("body")[0].childNodes, 
+                      SetHiddenState(document.getElementsByTagName("body")[0].childNodes,
                           "inline", '▽');
                     } else {
-                      SetHiddenState(document.getElementsByTagName("body")[0].childNodes, 
+                      SetHiddenState(document.getElementsByTagName("body")[0].childNodes,
                           "none", '▶');
                     }
                   }
@@ -138,7 +138,7 @@
 
     Revision 2.59
   </p>
-  
+
   <address>
     Amit Patel<br>
     Antoine Picard<br>
@@ -203,15 +203,15 @@
       style guide is a list of <em>do</em>s and <em>don't</em>s for Python
       programs.
     </p>
-    
+
     <p>
       To help you format code correctly, we've created a <a href="google_python_style.vim">settings
       file for Vim</a>.  For Emacs, the default settings should be fine.
     </p>
-    
-    
+
+
   </DIV>
-  
+
   <DIV class="">
 <H2 name="Python_Language_Rules" id="Python_Language_Rules">Python Language Rules</H2>
      <DIV class="">
@@ -230,7 +230,7 @@
         code. It finds
         problems that are typically caught by a compiler for less dynamic
         languages like C and C++.
-        
+
         Because of the
         dynamic nature of Python, some warnings may be incorrect; however,
         spurious warnings should be fairly infrequent.
@@ -251,11 +251,11 @@
         Suppress warnings if they are inappropriate so that other issues are
         not hidden.
         </P>
-        
+
         <p>
           To suppress warnings, you can set a line-level comment:
         </p>
-        
+
         <DIV class=""><PRE>
 <span class="external"></span>dict = 'something awful'  # Bad Idea... pylint: disable=redefined-builtin</PRE></DIV>
         <p>
@@ -264,7 +264,7 @@
           (<code>C0112</code>) and a symbolic name
           (<code>empty-docstring</code>).  Prefer the symbolic
           names in new code or when updating existing code.
-          
+
         </p>
         <p>
           If the reason for the suppression is not clear from the symbolic name,
@@ -297,7 +297,6 @@
 <span class="external"></span>def foo(a, unused_b, unused_c, d=None, e=None):
   <span class="external">  </span>_ = d, e
   <span class="external">  </span>return a
-<span class="external"></span>
 </PRE></DIV>
       </DIV></DIV>
     </DIV>
@@ -376,7 +375,7 @@
       <p>
         Imports should be as follows:
       </p>
-    
+
     <DIV class=""><PRE># Reference in code with complete name.
 import sound.effects.echo
 
@@ -414,10 +413,10 @@ from sound.effects import echo
         </P>
         <P class="">
 <SPAN class="stylepoint_section">Decision:  </SPAN>
-        
-        
+
+
       Exceptions must follow certain conditions:
-        
+
         <ul>
           <li>Raise exceptions like this: <code>raise MyException('Error
             message')</code> or <code>raise MyException</code>.  Do not
@@ -1057,7 +1056,6 @@ No:  <span class="external"></span>def foo(a, b=FLAGS.my_thing):  # sys.argv has
     <span class="external">    </span>return summand1 + summand2
 
   <span class="external">  </span>return adder
-<span class="external"></span>
 </PRE></DIV>
         </P>
         <P class="">
@@ -1103,7 +1101,7 @@ No:  <span class="external"></span>def foo(a, b=FLAGS.my_thing):  # sys.argv has
       <DIV class=""><DIV class="stylepoint_body" name="Function_and_Method_Decorators__body" id="Function_and_Method_Decorators__body" style="display: none">
         <P class="">
 <SPAN class="stylepoint_section">Definition:  </SPAN>
-      
+
       <a HREF="https://www.python.org/doc/2.4.3/whatsnew/node6.html">Decorators
        for Functions and Methods</a>
       (a.k.a "the <code>@</code> notation").
@@ -1117,7 +1115,6 @@ No:  <span class="external"></span>def foo(a, b=FLAGS.my_thing):  # sys.argv has
   <span class="external">  </span>@my_decorator
   <span class="external">  </span>def method(self):
     <span class="external">    </span># method body ...
-<span class="external"></span>
 </PRE></DIV>
 
       is equivalent to:
@@ -1126,7 +1123,6 @@ No:  <span class="external"></span>def foo(a, b=FLAGS.my_thing):  # sys.argv has
   <span class="external">  </span>def method(self):
     <span class="external">    </span># method body ...
   <span class="external">  </span>method = my_decorator(method)
-<span class="external"></span>
 </PRE></DIV>
         </P>
         <P class="">
@@ -1222,7 +1218,7 @@ No:  <span class="external"></span>def foo(a, b=FLAGS.my_thing):  # sys.argv has
         </P>
         <P class="">
 <SPAN class="stylepoint_section">Decision:  </SPAN>
-          Avoid these features in 
+          Avoid these features in
           your code.
         </P>
       </DIV></DIV>
@@ -1256,7 +1252,7 @@ No:  <span class="external"></span>def foo(a, b=FLAGS.my_thing):  # sys.argv has
       <ul>
         <li>Long import statements.</li>
         <li>URLs in comments.</li>
-        
+
       </ul>
     </p>
 
@@ -1266,19 +1262,18 @@ No:  <span class="external"></span>def foo(a, b=FLAGS.my_thing):  # sys.argv has
 
     <p>
       Make use of Python's
-      
+
       <a HREF="https://docs.python.org/reference/lexical_analysis.html#implicit-line-joining">implicit
       line joining inside parentheses, brackets and braces</a>.
       If necessary, you can add an extra pair of parentheses around an
       expression.
     </p>
 
-    
-    <DIV class=""><PRE>Yes: foo_bar(self, width, height, color='black', design=None, x='foo',
-             emphasis=None, highlight=0)
+    <DIV class=""><PRE>foo_bar(self, width, height, color='black', design=None, x='foo',
+        emphasis=None, highlight=0)
 
-     if (width == 0 and height == 0 and
-         color == 'red' and emphasis == 'strong'):</PRE></DIV>
+if (width == 0 and height == 0 and
+    color == 'red' and emphasis == 'strong'):</PRE></DIV>
 
 
     <p>
@@ -1294,8 +1289,8 @@ No:  <span class="external"></span>def foo(a, b=FLAGS.my_thing):  # sys.argv has
       Within comments, put long URLs on their own line if necessary.
     </p>
 
-    <DIV class=""><PRE>Yes:  <span class="external"></span># See details at
-      <span class="external"></span># https://www.example.com/us/developer/documentation/api/content/v2.0/csv_file_name_extension_full_specification.html</PRE></DIV>
+    <DIV class=""><PRE><span class="external"></span># See details at
+<span class="external"></span># https://www.example.com/us/developer/documentation/api/content/v2.0/csv_file_name_extension_full_specification.html</PRE></DIV>
 
     <DIV class=""><PRE class="badcode">No:  <span class="external"></span># See details at
      <span class="external"></span># https://www.example.com/us/developer/documentation/api/content/\
@@ -1492,7 +1487,7 @@ No:  <span class="external"></span>def foo(a, b=FLAGS.my_thing):  # sys.argv has
       'long_name': 2,
   }</PRE></DIV>
 
-    
+
       </DIV></DIV>
     </DIV>
 
@@ -1510,7 +1505,7 @@ No:  <span class="external"></span>def foo(a, b=FLAGS.my_thing):  # sys.argv has
         <code>2</code> or <code>3</code> suffix.
       </DIV>
       <DIV class=""><DIV class="stylepoint_body" name="Shebang_Line__body" id="Shebang_Line__body" style="display: none">
-        
+
         <p>
           This line is used by the kernel to find the Python interpreter, but is
           ignored by Python when importing modules.  It is only necessary on a
@@ -1554,8 +1549,8 @@ No:  <span class="external"></span>def foo(a, b=FLAGS.my_thing):  # sys.argv has
     <P class="">
 <SPAN class="stylepoint_subsection">Modules</SPAN>
 
-    
-    
+
+
     <p>
       Every file should contain license boilerplate.
       Choose the appropriate boilerplate for the license used by the project
@@ -1755,9 +1750,8 @@ No:  <span class="external"></span>def foo(a, b=FLAGS.my_thing):  # sys.argv has
          <span class="external">    </span>pass
 
 
-     <span class="external"></span>class ChildClass(ParentClass):
-       <span class="external">  </span>"""Explicitly inherits from another class already."""
-<span class="external"></span>
+<span class="external"></span>class ChildClass(ParentClass):
+  <span class="external">  </span>"""Explicitly inherits from another class already."""
 </PRE></DIV>
     <DIV class=""><PRE class="badcode">No: <span class="external"></span>class SampleClass:
       <span class="external">  </span>pass
@@ -1946,7 +1940,7 @@ Don'<span class="external"></span>t do this.
         <p>
           <code>TODO</code>s should include the string <code>TODO</code> in
           all caps, followed by the
-          
+
           name, e-mail address, or other
           identifier
           of the person who can best provide context about the problem
@@ -1958,11 +1952,11 @@ Don'<span class="external"></span>t do this.
           <code>TODO</code> is not a commitment that the person referenced
           will fix the problem.  Thus when you create a <code>TODO</code>, it is
           almost always your
-          
+
           name
           that is given.
         </p>
-        
+
         <DIV class=""><PRE># TODO(kl@gmail.com): Use a "*" here for string repetition.
 # TODO(Zeke) Change this to use relations.</PRE></DIV>
         <p>
@@ -1998,7 +1992,7 @@ Don'<span class="external"></span>t do this.
     <ul>
       <li>standard library imports</li>
       <li>third-party imports</li>
-      
+
       <li>application-specific imports</li>
     </ul>
     <p>
@@ -2011,9 +2005,9 @@ Don'<span class="external"></span>t do this.
 <span class="external"></span>from foo.bar import baz
 <span class="external"></span>from foo.bar import Quux
 <span class="external"></span>from Foob import ar</PRE></DIV>
-    
-    
-    
+
+
+
       </DIV></DIV>
     </DIV>
     <DIV class="">
@@ -2035,13 +2029,11 @@ Don'<span class="external"></span>t do this.
       there is no <code>else</code>.
     </p>
 
-    <DIV class=""><PRE>Ye<span class="external"></span>s:
-
-  <span class="external"></span>if foo: bar(foo)</PRE></DIV>
-<DIV class=""><PRE class="badcode">No<span class="external"></span>:
-
-  <span class="external"></span>if foo: bar(foo)
-  <span class="external"></span>else:   baz(foo)
+    <DIV class=""><PRE>
+<span class="external"></span>if foo: bar(foo)</PRE></DIV>
+<DIV class=""><PRE class="badcode">
+<span class="external"></span>if foo: bar(foo)
+<span class="external"></span>else:   baz(foo)
 
   <span class="external"></span>try:               bar(foo)
   <span class="external"></span>except ValueError: baz(foo)
@@ -2133,15 +2125,15 @@ Don'<span class="external"></span>t do this.
 <SPAN class="stylepoint_subsection">Guidelines derived from Guido's Recommendations</SPAN>
 
     <table rules="all" border="1" cellspacing="2" cellpadding="2">
-      
+
       <tr>
         <th>Type</th>
         <th>Public</th>
         <th>Internal</th>
       </tr>
-      
 
-      
+
+
       <tr>
         <td>Packages</td>
         <td><code>lower_with_under</code></td>
@@ -2166,7 +2158,7 @@ Don'<span class="external"></span>t do this.
         <td></td>
       </tr>
 
-      
+
 
       <tr>
         <td>Functions</td>
@@ -2192,7 +2184,7 @@ Don'<span class="external"></span>t do this.
         <td><code>_lower_with_under (protected) or __lower_with_under (private)</code></td>
       </tr>
 
-      
+
 
       <tr>
         <td>Method Names</td>
@@ -2211,11 +2203,11 @@ Don'<span class="external"></span>t do this.
         <td><code>lower_with_under</code></td>
         <td></td>
       </tr>
-      
+
 
     </table>
 
-    
+
    </P>
       </DIV></DIV>
     </DIV>
@@ -2238,14 +2230,14 @@ Don'<span class="external"></span>t do this.
       <code>if __name__ == '__main__'</code> before executing your
       main program so that the main program is not executed when the
       module is imported.
-      
+
     </p>
 
-    
 
-    
 
-    
+
+
+
 
     <DIV class=""><PRE>
 <span class="external"></span>def main():
@@ -2253,7 +2245,6 @@ Don'<span class="external"></span>t do this.
 
 <span class="external"></span>if __name__ == '__main__':
   <span class="external">  </span>main()
-<span class="external"></span>
 </PRE></DIV>
 
     <p>

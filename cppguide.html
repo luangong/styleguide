@@ -296,16 +296,17 @@ function, or template without an associated definition.</p>
   Replacing an <code>#include</code> with a forward
   declaration can silently change the meaning of
   code:
-      <pre>      // b.h:
-      struct B {};
-      struct D : B {};
+<pre>
+// b.h:
+struct B {};
+struct D : B {};
 
-      // good_user.cc:
-      #include "b.h"
-      void f(B*);
-      void f(void*);
-      void test(D* x) { f(x); }  // calls f(B*)
-      </pre>
+// good_user.cc:
+#include "b.h"
+void f(B*);
+void f(void*);
+void test(D* x) { f(x); }  // calls f(B*)
+</pre>
   If the <code>#include</code> was replaced with forward
   decls for <code>B</code> and <code>D</code>,
   <code>test()</code> would call <code>f(void*)</code>.
@@ -669,6 +670,7 @@ inline void my_inline_function() {
   namespace baz = ::foo::bar::baz;
   ...
 }
+
 }  // namespace librarian
 </pre>
 
@@ -707,7 +709,9 @@ Do not use internal linkage in <code>.h</code> files.</p>
   terminating comment, leave the namespace name empty:</p>
 
 <pre>namespace {
+
 ...
+
 }  // namespace
 </pre>
 </div>
@@ -749,18 +753,22 @@ functions which do not share static data, use
 <code>myproject/foo_bar.h</code>, for example, write</p>
 <pre>namespace myproject {
 namespace foo_bar {
+
 void Function1();
 void Function2();
+
 }  // namespace foo_bar
 }  // namespace myproject
 </pre>
 <p>instead of</p>
 <pre class="badcode">namespace myproject {
+
 class FooBar {
  public:
   static void Function1();
   static void Function2();
 };
+
 }  // namespace myproject
 </pre>
 
@@ -2966,7 +2974,7 @@ problems of printing, comparisons, and structure alignment.</p>
 #define PRIuS __PRIS_PREFIX "u"
 #define PRIXS __PRIS_PREFIX "X"
 #define PRIoS __PRIS_PREFIX "o"
-  </pre>
+</pre>
   </div> 
 
   <table border="1" summary="portable printf specifiers">
@@ -4032,23 +4040,27 @@ implementation retain some degree of freedom to change the alias.</p>
 
 <p>For example, these aliases document how they are intended to be used in client code:</p>
 <pre>namespace a {
+
 // Used to store field measurements. DataPoint may change from Bar* to some internal type.
 // Client code should treat it as an opaque pointer.
 using DataPoint = foo::bar::Bar*;
 
 // A set of measurements. Just an alias for user convenience.
 using TimeSeries = std::unordered_set&lt;DataPoint, std::hash&lt;DataPoint&gt;, DataPointComparator&gt;;
+
 }  // namespace a
 </pre>
 
 <p>These aliases don't document intended use, and half of them aren't meant for client use:</p>
 
 <pre class="badcode">namespace a {
+
 // Bad: none of these say how they should be used.
 using DataPoint = foo::bar::Bar*;
 using std::unordered_set;  // Bad: just for local convenience
 using std::hash;           // Bad: just for local convenience
 typedef unordered_set&lt;DataPoint, hash&lt;DataPoint&gt;, DataPointComparator&gt; TimeSeries;
+
 }  // namespace a
 </pre>
 
