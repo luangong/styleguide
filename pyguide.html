@@ -341,7 +341,6 @@
 <span class="external"></span>from sound.effects import echo
 <span class="external"></span>...
 <span class="external"></span>echo.EchoFilter(input, output, delay=0.7, atten=4)
-<span class="external"></span>
 </PRE></DIV>
     <p>
       Do not use relative names in imports. Even if the module is in the
@@ -568,37 +567,37 @@ from sound.effects import echo
       permitted.  Use loops instead when things get more complicated.
         </P>
 
-<DIV class=""><PRE>Ye<span class="external"></span>s:
-  <span class="external"></span>result = []
-  <span class="external"></span>for x in range(10):
-    <span class="external">  </span>for y in range(5):
-      <span class="external">    </span>if x * y &gt; 10:
-        <span class="external">      </span>result.append((x, y))
+<DIV class=""><PRE>
+<span class="external"></span>result = []
+<span class="external"></span>for x in range(10):
+  <span class="external">  </span>for y in range(5):
+    <span class="external">    </span>if x * y &gt; 10:
+      <span class="external">      </span>result.append((x, y))
 
-  <span class="external"></span>for x in xrange(5):
-    <span class="external">  </span>for y in xrange(5):
-      <span class="external">    </span>if x != y:
-        <span class="external">      </span>for z in xrange(5):
-          <span class="external">        </span>if y != z:
-            <span class="external">          </span>yield (x, y, z)
+<span class="external"></span>for x in xrange(5):
+  <span class="external">  </span>for y in xrange(5):
+    <span class="external">    </span>if x != y:
+      <span class="external">      </span>for z in xrange(5):
+        <span class="external">        </span>if y != z:
+          <span class="external">          </span>yield (x, y, z)
 
-  <span class="external"></span>return ((x, complicated_transform(x))
-  <span class="external"></span>        for x in long_generator_function(parameter)
-  <span class="external"></span>        if x is not None)
+<span class="external"></span>return ((x, complicated_transform(x))
+<span class="external"></span>        for x in long_generator_function(parameter)
+<span class="external"></span>        if x is not None)
 
-  <span class="external"></span>squares = [x * x for x in range(10)]
+<span class="external"></span>squares = [x * x for x in range(10)]
 
-  <span class="external"></span>eat(jelly_bean for jelly_bean in jelly_beans
-  <span class="external"></span>    if jelly_bean.color == 'black')</PRE></DIV>
-<DIV class=""><PRE class="badcode">No<span class="external"></span>:
-  <span class="external"></span>result = [(x, y) for x in range(10) for y in range(5) if x * y &gt; 10]
+<span class="external"></span>eat(jelly_bean for jelly_bean in jelly_beans
+<span class="external"></span>    if jelly_bean.color == 'black')</PRE></DIV>
+<DIV class=""><PRE class="badcode">
+<span class="external"></span>result = [(x, y) for x in range(10) for y in range(5) if x * y &gt; 10]
 
-  <span class="external"></span>return ((x, y, z)
-  <span class="external"></span>        for x in xrange(5)
-  <span class="external"></span>        for y in xrange(5)
-  <span class="external"></span>        if x != y
-  <span class="external"></span>        for z in xrange(5)
-  <span class="external"></span>        if y != z)</PRE></DIV>
+<span class="external"></span>return ((x, y, z)
+<span class="external"></span>        for x in xrange(5)
+<span class="external"></span>        for y in xrange(5)
+<span class="external"></span>        if x != y
+<span class="external"></span>        for z in xrange(5)
+<span class="external"></span>        if y != z)</PRE></DIV>
       </DIV></DIV>
     </DIV>
     <DIV class="">
@@ -635,14 +634,14 @@ from sound.effects import echo
       methods to methods that return lists, except that you should not
       mutate a container while iterating over it.
 
-<DIV class=""><PRE>Yes:  <span class="external"></span>for key in adict: ...
-      <span class="external"></span>if key not in adict: ...
-      <span class="external"></span>if obj in alist: ...
-      <span class="external"></span>for line in afile: ...
-      <span class="external"></span>for k, v in dict.iteritems(): ...</PRE></DIV>
-<DIV class=""><PRE class="badcode">No:   <span class="external"></span>for key in adict.keys(): ...
-      <span class="external"></span>if not adict.has_key(key): ...
-      <span class="external"></span>for line in afile.readlines(): ...</PRE></DIV>
+<DIV class=""><PRE><span class="external"></span>for key in adict: ...
+<span class="external"></span>if key not in adict: ...
+<span class="external"></span>if obj in alist: ...
+<span class="external"></span>for line in afile: ...
+<span class="external"></span>for k, v in dict.iteritems(): ...</PRE></DIV>
+<DIV class=""><PRE class="badcode"><span class="external"></span>for key in adict.keys(): ...
+<span class="external"></span>if not adict.has_key(key): ...
+<span class="external"></span>for line in afile.readlines(): ...</PRE></DIV>
         </P>
       </DIV></DIV>
     </DIV>
@@ -792,15 +791,17 @@ from sound.effects import echo
         Do not use mutable objects as default values in the function or method
         definition.
       </p>
-<DIV class=""><PRE>Yes: <span class="external"></span>def foo(a, b=None):
-       <span class="external">  </span>if b is None:
-         <span class="external">    </span>b = []</PRE></DIV>
-<DIV class=""><PRE class="badcode">No:  <span class="external"></span>def foo(a, b=[]):
-       <span class="external">  </span>...
-No:  <span class="external"></span>def foo(a, b=time.time()):  # The time the module was loaded???
-       <span class="external">  </span>...
-No:  <span class="external"></span>def foo(a, b=FLAGS.my_thing):  # sys.argv has not yet been parsed...
-       <span class="external">  </span>...</PRE></DIV>
+<DIV class=""><PRE><span class="external"></span>def foo(a, b=None):
+  <span class="external">  </span>if b is None:
+    <span class="external">    </span>b = []</PRE></DIV>
+<DIV class=""><PRE class="badcode"><span class="external"></span>def foo(a, b=[]):
+  <span class="external">  </span>...
+
+<span class="external"></span>def foo(a, b=time.time()):  # The time the module was loaded???
+  <span class="external">  </span>...
+
+<span class="external"></span>def foo(a, b=FLAGS.my_thing):  # sys.argv has not yet been parsed...
+  <span class="external">  </span>...</PRE></DIV>
         </P>
       </DIV></DIV>
     </DIV>
@@ -852,50 +853,49 @@ No:  <span class="external"></span>def foo(a, b=FLAGS.my_thing):  # sys.argv has
       by the property (using the Template Method DP).
      </a></p>
 
-     <DIV class=""><PRE>Yes: <span class="external"></span>import math
+     <DIV class=""><PRE><span class="external"></span>import math
 
-     <span class="external"></span>class Square(object):
-       <span class="external">  </span>"""A square with two properties: a writable area and a read-only perimeter.
+<span class="external"></span>class Square(object):
+  <span class="external">  </span>"""A square with two properties: a writable area and a read-only perimeter.
 
-       <span class="external">  </span>To use:
-       <span class="external">  </span>&gt;&gt;&gt; sq = Square(3)
-       <span class="external">  </span>&gt;&gt;&gt; sq.area
-       <span class="external">  </span>9
-       <span class="external">  </span>&gt;&gt;&gt; sq.perimeter
-       <span class="external">  </span>12
-       <span class="external">  </span>&gt;&gt;&gt; sq.area = 16
-       <span class="external">  </span>&gt;&gt;&gt; sq.side
-       <span class="external">  </span>4
-       <span class="external">  </span>&gt;&gt;&gt; sq.perimeter
-       <span class="external">  </span>16
-       <span class="external">  </span>"""
+  <span class="external">  </span>To use:
+  <span class="external">  </span>&gt;&gt;&gt; sq = Square(3)
+  <span class="external">  </span>&gt;&gt;&gt; sq.area
+  <span class="external">  </span>9
+  <span class="external">  </span>&gt;&gt;&gt; sq.perimeter
+  <span class="external">  </span>12
+  <span class="external">  </span>&gt;&gt;&gt; sq.area = 16
+  <span class="external">  </span>&gt;&gt;&gt; sq.side
+  <span class="external">  </span>4
+  <span class="external">  </span>&gt;&gt;&gt; sq.perimeter
+  <span class="external">  </span>16
+  <span class="external">  </span>"""
 
-       <span class="external">  </span>def __init__(self, side):
-         <span class="external">    </span>self.side = side
+  <span class="external">  </span>def __init__(self, side):
+    <span class="external">    </span>self.side = side
 
-       <span class="external">  </span>def __get_area(self):
-         <span class="external">    </span>"""Calculates the 'area' property."""
-         <span class="external">    </span>return self.side ** 2
+  <span class="external">  </span>def __get_area(self):
+    <span class="external">    </span>"""Calculates the 'area' property."""
+    <span class="external">    </span>return self.side ** 2
 
-       <span class="external">  </span>def ___get_area(self):
-         <span class="external">    </span>"""Indirect accessor for 'area' property."""
-         <span class="external">    </span>return self.__get_area()
+  <span class="external">  </span>def ___get_area(self):
+    <span class="external">    </span>"""Indirect accessor for 'area' property."""
+    <span class="external">    </span>return self.__get_area()
 
-       <span class="external">  </span>def __set_area(self, area):
-         <span class="external">    </span>"""Sets the 'area' property."""
-         <span class="external">    </span>self.side = math.sqrt(area)
+  <span class="external">  </span>def __set_area(self, area):
+    <span class="external">    </span>"""Sets the 'area' property."""
+    <span class="external">    </span>self.side = math.sqrt(area)
 
-       <span class="external">  </span>def ___set_area(self, area):
-         <span class="external">    </span>"""Indirect setter for 'area' property."""
-         <span class="external">    </span>self.__set_area(area)
+  <span class="external">  </span>def ___set_area(self, area):
+    <span class="external">    </span>"""Indirect setter for 'area' property."""
+    <span class="external">    </span>self.__set_area(area)
 
-       <span class="external">  </span>area = property(___get_area, ___set_area,
-       <span class="external">  </span>                doc="""Gets or sets the area of the square.""")
+  <span class="external">  </span>area = property(___get_area, ___set_area,
+  <span class="external">  </span>                doc="""Gets or sets the area of the square.""")
 
-       <span class="external">  </span>@property
-       <span class="external">  </span>def perimeter(self):
-         <span class="external">    </span>return self.side * 4
-<span class="external"></span>
+  <span class="external">  </span>@property
+  <span class="external">  </span>def perimeter(self):
+    <span class="external">    </span>return self.side * 4
 </PRE></DIV>
         </P>
       </DIV></DIV>
@@ -960,22 +960,22 @@ No:  <span class="external"></span>def foo(a, b=FLAGS.my_thing):  # sys.argv has
         benefit (i.e., accidentally handling <code>None</code> as 0).  You may
         compare a value which is known to be an integer (and is not the
         result of <code>len()</code>) against the integer 0.
-<DIV class=""><PRE>Yes: <span class="external"></span>if not users:
-       <span class="external">  </span>print 'no users'
+<DIV class=""><PRE><span class="external"></span>if not users:
+  <span class="external">  </span>print 'no users'
 
-     <span class="external"></span>if foo == 0:
-       <span class="external">  </span>self.handle_zero()
+<span class="external"></span>if foo == 0:
+  <span class="external">  </span>self.handle_zero()
 
-     <span class="external"></span>if i % 10 == 0:
-       <span class="external">  </span>self.handle_multiple_of_ten()</PRE></DIV>
-<DIV class=""><PRE class="badcode">No:  <span class="external"></span>if len(users) == 0:
-       <span class="external">  </span>print 'no users'
+<span class="external"></span>if i % 10 == 0:
+  <span class="external">  </span>self.handle_multiple_of_ten()</PRE></DIV>
+<DIV class=""><PRE class="badcode"><span class="external"></span>if len(users) == 0:
+  <span class="external">  </span>print 'no users'
 
-     <span class="external"></span>if foo is not None and not foo:
-       <span class="external">  </span>self.handle_zero()
+<span class="external"></span>if foo is not None and not foo:
+  <span class="external">  </span>self.handle_zero()
 
-     <span class="external"></span>if not i % 10:
-       <span class="external">  </span>self.handle_multiple_of_ten()</PRE></DIV>
+<span class="external"></span>if not i % 10:
+  <span class="external">  </span>self.handle_multiple_of_ten()</PRE></DIV>
 </li>
 
       <li>
@@ -1010,18 +1010,13 @@ No:  <span class="external"></span>def foo(a, b=FLAGS.my_thing):  # sys.argv has
           We do not use any Python version which does not support
           these features, so there is no reason not to use the new
           styles.
-<DIV class=""><PRE>Yes: <span class="external"></span>words = foo.split(':')
-
-     <span class="external"></span>[x[1] for x in my_list if x[2] == 5]
-
-     <span class="external"></span>map(math.sqrt, data)    # Ok. No inlined lambda expression.
-
-     <span class="external"></span>fn(*args, **kwargs)</PRE></DIV>
-<DIV class=""><PRE class="badcode">No:  <span class="external"></span>words = string.split(foo, ':')
-
-     <span class="external"></span>map(lambda x: x[1], filter(lambda x: x[2] == 5, my_list))
-
-     <span class="external"></span>apply(fn, args, kwargs)</PRE></DIV>
+<DIV class=""><PRE><span class="external"></span>words = foo.split(':')
+<span class="external"></span>[x[1] for x in my_list if x[2] == 5]
+<span class="external"></span>map(math.sqrt, data)    # Ok. No inlined lambda expression.
+<span class="external"></span>fn(*args, **kwargs)</PRE></DIV>
+<DIV class=""><PRE class="badcode"><span class="external"></span>words = string.split(foo, ':')
+<span class="external"></span>map(lambda x: x[1], filter(lambda x: x[2] == 5, my_list))
+<span class="external"></span>apply(fn, args, kwargs)</PRE></DIV>
         </P>
       </DIV></DIV>
     </DIV>
@@ -1292,9 +1287,9 @@ if (width == 0 and height == 0 and
     <DIV class=""><PRE><span class="external"></span># See details at
 <span class="external"></span># https://www.example.com/us/developer/documentation/api/content/v2.0/csv_file_name_extension_full_specification.html</PRE></DIV>
 
-    <DIV class=""><PRE class="badcode">No:  <span class="external"></span># See details at
-     <span class="external"></span># https://www.example.com/us/developer/documentation/api/content/\
-     <span class="external"></span># v2.0/csv_file_name_extension_full_specification.html</PRE></DIV>
+    <DIV class=""><PRE class="badcode"><span class="external"></span># See details at
+<span class="external"></span># https://www.example.com/us/developer/documentation/api/content/\
+<span class="external"></span># v2.0/csv_file_name_extension_full_specification.html</PRE></DIV>
 
     <p>
       Make note of the indentation of the elements in the line
@@ -1319,21 +1314,28 @@ if (width == 0 and height == 0 and
       It is however fine to use parentheses around tuples.
     </p>
 
-<DIV class=""><PRE>Yes: <span class="external"></span>if foo:
-       <span class="external">  </span>bar()
-     <span class="external"></span>while x:
-       <span class="external">  </span>x = bar()
-     <span class="external"></span>if x and y:
-       <span class="external">  </span>bar()
-     <span class="external"></span>if not x:
-       <span class="external">  </span>bar()
-     <span class="external"></span>return foo
-     <span class="external"></span>for (x, y) in dict.items(): ...</PRE></DIV>
-<DIV class=""><PRE class="badcode">No:  <span class="external"></span>if (x):
-       <span class="external">  </span>bar()
-     <span class="external"></span>if not(x):
-       <span class="external">  </span>bar()
-     <span class="external"></span>return (foo)</PRE></DIV>
+<DIV class=""><PRE><span class="external"></span>if foo:
+  <span class="external">  </span>bar()
+
+<span class="external"></span>while x:
+  <span class="external">  </span>x = bar()
+
+<span class="external"></span>if x and y:
+  <span class="external">  </span>bar()
+
+<span class="external"></span>if not x:
+  <span class="external">  </span>bar()
+
+<span class="external"></span>return foo
+
+<span class="external"></span>for (x, y) in dict.items(): ...</PRE></DIV>
+<DIV class=""><PRE class="badcode"><span class="external"></span>if (x):
+  <span class="external">  </span>bar()
+
+<span class="external"></span>if not(x):
+  <span class="external">  </span>bar()
+
+<span class="external"></span>return (foo)</PRE></DIV>
       </DIV></DIV>
     </DIV>
     <DIV class="">
@@ -1355,43 +1357,43 @@ if (width == 0 and height == 0 and
     </p>
 
 
-<DIV class=""><PRE>Yes:   # Aligned with opening delimiter
-       foo = long_function_name(var_one, var_two,
-                                var_three, var_four)
+<DIV class=""><PRE># Aligned with opening delimiter
+foo = long_function_name(var_one, var_two,
+                         var_three, var_four)
 
-       # Aligned with opening delimiter in a dictionary
-       foo = {
-           long_dictionary_key: value1 +
-                                value2,
-           ...
-       }
+# Aligned with opening delimiter in a dictionary
+foo = {
+    long_dictionary_key: value1 +
+                         value2,
+    ...
+}
 
-       # 4-space hanging indent; nothing on first line
-       foo = long_function_name(
-           var_one, var_two, var_three,
-           var_four)
+# 4-space hanging indent; nothing on first line
+foo = long_function_name(
+    var_one, var_two, var_three,
+    var_four)
 
-       # 4-space hanging indent in a dictionary
-       foo = {
-           long_dictionary_key:
-               long_dictionary_value,
-           ...
-       }</PRE></DIV>
-<DIV class=""><PRE class="badcode">No:    <span class="external"></span># Stuff on first line forbidden
-       <span class="external"></span>foo = long_function_name(var_one, var_two,
-       <span class="external"></span>    var_three, var_four)
+# 4-space hanging indent in a dictionary
+foo = {
+    long_dictionary_key:
+        long_dictionary_value,
+    ...
+}</PRE></DIV>
+<DIV class=""><PRE class="badcode"><span class="external"></span># Stuff on first line forbidden
+<span class="external"></span>foo = long_function_name(var_one, var_two,
+<span class="external"></span>    var_three, var_four)
 
-       <span class="external"></span># 2-space hanging indent forbidden
-       <span class="external"></span>foo = long_function_name(
-       <span class="external"></span>  var_one, var_two, var_three,
-       <span class="external"></span>  var_four)
+<span class="external"></span># 2-space hanging indent forbidden
+<span class="external"></span>foo = long_function_name(
+<span class="external"></span>  var_one, var_two, var_three,
+<span class="external"></span>  var_four)
 
-       <span class="external"></span># No hanging indent in a dictionary
-       <span class="external"></span>foo = {
-       <span class="external"></span>    long_dictionary_key:
-           <span class="external">    </span>long_dictionary_value,
-           <span class="external">    </span>...
-       <span class="external"></span>}</PRE></DIV>
+<span class="external"></span># No hanging indent in a dictionary
+<span class="external"></span>foo = {
+<span class="external"></span>    long_dictionary_key:
+<span class="external">    </span>long_dictionary_value,
+<span class="external">    </span>...
+<span class="external"></span>}</PRE></DIV>
       </DIV></DIV>
     </DIV>
     <DIV class="">
@@ -1426,27 +1428,27 @@ if (width == 0 and height == 0 and
     <p>
       No whitespace inside parentheses, brackets or braces.
     </p>
-<DIV class=""><PRE>Yes: <span class="external"></span>spam(ham[1], {eggs: 2}, [])</PRE></DIV>
-<DIV class=""><PRE class="badcode">No:  <span class="external"></span>spam( ham[ 1 ], { eggs: 2 }, [ ] )</PRE></DIV>
+<DIV class=""><PRE><span class="external"></span>spam(ham[1], {eggs: 2}, [])</PRE></DIV>
+<DIV class=""><PRE class="badcode"><span class="external"></span>spam( ham[ 1 ], { eggs: 2 }, [ ] )</PRE></DIV>
     <p>
       No whitespace before a comma, semicolon, or colon.  Do use
       whitespace after a comma, semicolon, or colon except at the end
       of the line.
     </p>
-<DIV class=""><PRE>Yes: <span class="external"></span>if x == 4:
-       <span class="external">  </span>print x, y
-     <span class="external"></span>x, y = y, x</PRE></DIV>
-<DIV class=""><PRE class="badcode">No:  <span class="external"></span>if x == 4 :
-       <span class="external">  </span>print x , y
-     <span class="external"></span>x , y = y , x</PRE></DIV>
+<DIV class=""><PRE><span class="external"></span>if x == 4:
+  <span class="external">  </span>print x, y
+<span class="external"></span>x, y = y, x</PRE></DIV>
+<DIV class=""><PRE class="badcode"><span class="external"></span>if x == 4 :
+  <span class="external">  </span>print x , y
+<span class="external"></span>x , y = y , x</PRE></DIV>
     <p>
       No whitespace before the open paren/bracket that starts an argument list,
       indexing or slicing.
     </p>
-    <DIV class=""><PRE>Yes: <span class="external"></span>spam(1)</PRE></DIV>
-<DIV class=""><PRE class="badcode">No:  <span class="external"></span>spam (1)</PRE></DIV>
-<DIV class=""><PRE>Yes: <span class="external"></span>dict['key'] = list[index]</PRE></DIV>
-<DIV class=""><PRE class="badcode">No:  <span class="external"></span>dict ['key'] = list [index]</PRE></DIV>
+    <DIV class=""><PRE><span class="external"></span>spam(1)</PRE></DIV>
+<DIV class=""><PRE class="badcode"><span class="external"></span>spam (1)</PRE></DIV>
+<DIV class=""><PRE><span class="external"></span>dict['key'] = list[index]</PRE></DIV>
+<DIV class=""><PRE class="badcode"><span class="external"></span>dict ['key'] = list [index]</PRE></DIV>
 
     <p>
       Surround binary operators with a single space on either side for
@@ -1456,36 +1458,36 @@ if (width == 0 and height == 0 and
       insertion of spaces around arithmetic operators but always be
       consistent about whitespace on either side of a binary operator.
     </p>
-<DIV class=""><PRE>Yes: <span class="external"></span>x == 1</PRE></DIV>
-<DIV class=""><PRE class="badcode">No:  <span class="external"></span>x&lt;1</PRE></DIV>
+<DIV class=""><PRE><span class="external"></span>x == 1</PRE></DIV>
+<DIV class=""><PRE class="badcode"><span class="external"></span>x&lt;1</PRE></DIV>
     <p>
       Don't use spaces around the '=' sign when used to indicate a
       keyword argument or a default parameter value.
     </p>
-<DIV class=""><PRE>Yes: <span class="external"></span>def complex(real, imag=0.0): return magic(r=real, i=imag)</PRE></DIV>
-<DIV class=""><PRE class="badcode">No:  <span class="external"></span>def complex(real, imag = 0.0): return magic(r = real, i = imag)</PRE></DIV>
+<DIV class=""><PRE><span class="external"></span>def complex(real, imag=0.0): return magic(r=real, i=imag)</PRE></DIV>
+<DIV class=""><PRE class="badcode"><span class="external"></span>def complex(real, imag = 0.0): return magic(r = real, i = imag)</PRE></DIV>
 
     <p>
       Don't use spaces to vertically align tokens on consecutive lines, since it
       becomes a maintenance burden (applies to <code>:</code>, <code>#</code>,
       <code>=</code>, etc.):
     </p>
-<DIV class=""><PRE>Yes:
-  foo = 1000  # comment
-  long_name = 2  # comment that should not be aligned
+<DIV class=""><PRE>
+foo = 1000  # comment
+long_name = 2  # comment that should not be aligned
 
-  dictionary = {
-      'foo': 1,
-      'long_name': 2,
-  }</PRE></DIV>
-<DIV class=""><PRE class="badcode">No:
-  foo       = 1000  # comment
-  long_name = 2     # comment that should not be aligned
+dictionary = {
+    'foo': 1,
+    'long_name': 2,
+}</PRE></DIV>
+<DIV class=""><PRE class="badcode">
+foo       = 1000  # comment
+long_name = 2     # comment that should not be aligned
 
-  dictionary = {
-      'foo'      : 1,
-      'long_name': 2,
-  }</PRE></DIV>
+dictionary = {
+    'foo'      : 1,
+    'long_name': 2,
+}</PRE></DIV>
 
 
       </DIV></DIV>
@@ -1652,7 +1654,6 @@ if (width == 0 and height == 0 and
     <span class="external">    </span>IOError: An error occurred accessing the bigtable.Table object.
   <span class="external">  </span>"""
   <span class="external">  </span>pass
-<span class="external"></span>
 </PRE></DIV>
     </P>
     <P class="">
@@ -1684,7 +1685,6 @@ if (width == 0 and height == 0 and
 
   <span class="external">  </span>def public_method(self):
     <span class="external">    </span>"""Performs operation blah."""
-<span class="external"></span>
 </PRE></DIV>
 
     </P>
@@ -1707,7 +1707,6 @@ if (width == 0 and height == 0 and
 <span class="external"></span># get the exact number.
 
 <span class="external"></span>if i &amp; (i-1) == 0:        # true iff i is a power of 2
-<span class="external"></span>
 </PRE></DIV>
 
     <p>
@@ -1724,7 +1723,6 @@ if (width == 0 and height == 0 and
     <DIV class=""><PRE class="badcode">
 <span class="external"></span># BAD COMMENT: Now go through the b array and make sure whenever i occurs
 <span class="external"></span># the next element is i+1
-<span class="external"></span>
 </PRE></DIV>
 
     </P>
@@ -1740,28 +1738,27 @@ if (width == 0 and height == 0 and
     from <code>object</code>.  This also applies to nested classes.
       </DIV>
       <DIV class=""><DIV class="stylepoint_body" name="Classes__body" id="Classes__body" style="display: none">
-    <DIV class=""><PRE>Yes: <span class="external"></span>class SampleClass(object):
-       <span class="external">  </span>pass
+    <DIV class=""><PRE><span class="external"></span>class SampleClass(object):
+<span class="external">  </span>pass
 
 
-     <span class="external"></span>class OuterClass(object):
+<span class="external"></span>class OuterClass(object):
 
-       <span class="external">  </span>class InnerClass(object):
-         <span class="external">    </span>pass
+<span class="external">  </span>class InnerClass(object):
+  <span class="external">    </span>pass
 
 
 <span class="external"></span>class ChildClass(ParentClass):
   <span class="external">  </span>"""Explicitly inherits from another class already."""
 </PRE></DIV>
-    <DIV class=""><PRE class="badcode">No: <span class="external"></span>class SampleClass:
-      <span class="external">  </span>pass
+    <DIV class=""><PRE class="badcode"><span class="external"></span>class SampleClass:
+  <span class="external">  </span>pass
 
 
-    <span class="external"></span>class OuterClass:
+<span class="external"></span>class OuterClass:
 
-      <span class="external">  </span>class InnerClass:
-        <span class="external">    </span>pass
-<span class="external"></span>
+  <span class="external">  </span>class InnerClass:
+    <span class="external">    </span>pass
 </PRE></DIV>
     <p>Inheriting from <code>object</code> is needed to make properties work
     properly, and it will protect your code from one particular potential
@@ -1786,15 +1783,15 @@ if (width == 0 and height == 0 and
       </DIV>
       <DIV class=""><DIV class="stylepoint_body" name="Strings__body" id="Strings__body" style="display: none">
 
-<DIV class=""><PRE>Yes: <span class="external"></span>x = a + b
-     <span class="external"></span>x = '%s, %s!' % (imperative, expletive)
-     <span class="external"></span>x = '{}, {}!'.format(imperative, expletive)
-     <span class="external"></span>x = 'name: %s; score: %d' % (name, n)
-     <span class="external"></span>x = 'name: {}; score: {}'.format(name, n)</PRE></DIV>
-<DIV class=""><PRE class="badcode">No: <span class="external"></span>x = '%s%s' % (a, b)  # use + in this case
-    <span class="external"></span>x = '{}{}'.format(a, b)  # use + in this case
-    <span class="external"></span>x = imperative + ', ' + expletive + '!'
-    <span class="external"></span>x = 'name: ' + name + '; score: ' + str(n)</PRE></DIV>
+<DIV class=""><PRE><span class="external"></span>x = a + b
+<span class="external"></span>x = '%s, %s!' % (imperative, expletive)
+<span class="external"></span>x = '{}, {}!'.format(imperative, expletive)
+<span class="external"></span>x = 'name: %s; score: %d' % (name, n)
+<span class="external"></span>x = 'name: {}; score: {}'.format(name, n)</PRE></DIV>
+<DIV class=""><PRE class="badcode"><span class="external"></span>x = '%s%s' % (a, b)  # use + in this case
+<span class="external"></span>x = '{}{}'.format(a, b)  # use + in this case
+<span class="external"></span>x = imperative + ', ' + expletive + '!'
+<span class="external"></span>x = 'name: ' + name + '; score: ' + str(n)</PRE></DIV>
 
     <p>
       Avoid using the <code>+</code> and <code>+=</code> operators to
@@ -1805,15 +1802,15 @@ if (width == 0 and height == 0 and
       each substring to a <code>io.BytesIO</code> buffer).
     </p>
 
-<DIV class=""><PRE>Yes: <span class="external"></span>items = ['&lt;table&gt;']
-     <span class="external"></span>for last_name, first_name in employee_list:
-       <span class="external">  </span>items.append('&lt;tr&gt;&lt;td&gt;%s, %s&lt;/td&gt;&lt;/tr&gt;' % (last_name, first_name))
-     <span class="external"></span>items.append('&lt;/table&gt;')
-     <span class="external"></span>employee_table = ''.join(items)</PRE></DIV>
-<DIV class=""><PRE class="badcode">No: <span class="external"></span>employee_table = '&lt;table&gt;'
-    <span class="external"></span>for last_name, first_name in employee_list:
-      <span class="external">  </span>employee_table += '&lt;tr&gt;&lt;td&gt;%s, %s&lt;/td&gt;&lt;/tr&gt;' % (last_name, first_name)
-    <span class="external"></span>employee_table += '&lt;/table&gt;'</PRE></DIV>
+<DIV class=""><PRE><span class="external"></span>items = ['&lt;table&gt;']
+<span class="external"></span>for last_name, first_name in employee_list:
+  <span class="external">  </span>items.append('&lt;tr&gt;&lt;td&gt;%s, %s&lt;/td&gt;&lt;/tr&gt;' % (last_name, first_name))
+<span class="external"></span>items.append('&lt;/table&gt;')
+<span class="external"></span>employee_table = ''.join(items)</PRE></DIV>
+<DIV class=""><PRE class="badcode"><span class="external"></span>employee_table = '&lt;table&gt;'
+<span class="external"></span>for last_name, first_name in employee_list:
+  <span class="external">  </span>employee_table += '&lt;tr&gt;&lt;td&gt;%s, %s&lt;/td&gt;&lt;/tr&gt;' % (last_name, first_name)
+<span class="external"></span>employee_table += '&lt;/table&gt;'</PRE></DIV>
 
     <p>
       Be consistent with your choice of string quote character within a file.
@@ -1823,14 +1820,14 @@ if (width == 0 and height == 0 and
       GPyLint enforces this.
     </p>
 
-<DIV class=""><PRE>Ye<span class="external"></span>s:
-  <span class="external"></span>Python('Why are you hiding your eyes?')
-  <span class="external"></span>Gollum("I'm scared of lint errors.")
-  <span class="external"></span>Narrator('"Good!" thought a happy Python reviewer.')</PRE></DIV>
-<DIV class=""><PRE class="badcode">No<span class="external"></span>:
-  <span class="external"></span>Python("Why are you hiding your eyes?")
-  <span class="external"></span>Gollum('The lint. It burns. It burns us.')
-  <span class="external"></span>Gollum("Always the great lint. Watching. Watching.")</PRE></DIV>
+<DIV class=""><PRE>
+<span class="external"></span>Python('Why are you hiding your eyes?')
+<span class="external"></span>Gollum("I'm scared of lint errors.")
+<span class="external"></span>Narrator('"Good!" thought a happy Python reviewer.')</PRE></DIV>
+<DIV class=""><PRE class="badcode">
+<span class="external"></span>Python("Why are you hiding your eyes?")
+<span class="external"></span>Gollum('The lint. It burns. It burns us.')
+<span class="external"></span>Gollum("Always the great lint. Watching. Watching.")</PRE></DIV>
 
     <p>
       Prefer <code>"""</code> for multi-line strings rather than
@@ -1843,13 +1840,13 @@ if (width == 0 and height == 0 and
       not flow with the indentation of the rest of the program:
     </p>
 
-<DIV class=""><PRE>Ye<span class="external"></span>s:
-  <span class="external"></span>print ("This is much nicer.\n"
-  <span class="external"></span>       "Do it this way.\n")</PRE></DIV>
-<DIV class=""><PRE class="badcode">  No<span class="external"></span>:
-    <span class="external"></span>print """This is pretty ugly.
+<DIV class=""><PRE>
+<span class="external"></span>print ("This is much nicer.\n"
+<span class="external"></span>       "Do it this way.\n")</PRE></DIV>
+<DIV class=""><PRE class="badcode">
+<span class="external"></span>print """This is pretty ugly.
 Don'<span class="external"></span>t do this.
-"""<span class="external"></span>
+"""
 </PRE></DIV>
 
       </DIV></DIV>
@@ -1980,9 +1977,9 @@ Don'<span class="external"></span>t do this.
       E.g.:
     </p>
 
-<DIV class=""><PRE>Yes: <span class="external"></span>import os
-     <span class="external"></span>import sys</PRE></DIV>
-<DIV class=""><PRE class="badcode">No:  <span class="external"></span>import os, sys</PRE></DIV>
+<DIV class=""><PRE><span class="external"></span>import os
+<span class="external"></span>import sys</PRE></DIV>
+<DIV class=""><PRE class="badcode"><span class="external"></span>import os, sys</PRE></DIV>
     <p>
       Imports are always put at the top of the file, just after any
       module comments and doc strings and before module globals and
@@ -2035,13 +2032,12 @@ Don'<span class="external"></span>t do this.
 <span class="external"></span>if foo: bar(foo)
 <span class="external"></span>else:   baz(foo)
 
-  <span class="external"></span>try:               bar(foo)
-  <span class="external"></span>except ValueError: baz(foo)
+<span class="external"></span>try:               bar(foo)
+<span class="external"></span>except ValueError: baz(foo)
 
-  <span class="external"></span>try:
-    <span class="external">  </span>bar(foo)
-  <span class="external"></span>except ValueError: baz(foo)
-<span class="external"></span>
+<span class="external"></span>try:
+  <span class="external">  </span>bar(foo)
+<span class="external"></span>except ValueError: baz(foo)
 </PRE></DIV>
       </DIV></DIV>
     </DIV>
@@ -2241,7 +2237,7 @@ Don'<span class="external"></span>t do this.
 
     <DIV class=""><PRE>
 <span class="external"></span>def main():
-   <span class="external">   </span>...
+  <span class="external">  </span>...
 
 <span class="external"></span>if __name__ == '__main__':
   <span class="external">  </span>main()
